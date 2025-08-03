@@ -1,5 +1,5 @@
 # jmg_vehicleshop
-# ESX Vehicle Shop Script
+# ESX Vehicle Shop
 
 Script toko kendaraan modern untuk ESX dengan sistem manajemen pemilik, sistem stok, dan UI yang indah.
 
