@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vehicle Shop</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Vehicle Shop Menu -->
+    <div id="shopMenu" class="menu-container" style="display: none;">
+        <div class="menu-header">
+            <h1><i class="fas fa-car"></i> Vehicle Shop</h1>
+            <button class="close-btn" onclick="closeMenu()">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        
+        <div class="menu-content">
+            <!-- Categories Filter -->
+            <div class="categories-section">
+                <h3>Categories</h3>
+                <div class="categories-grid" id="categoriesGrid">
+                    <button class="category-btn active" data-category="all">
+                        <i class="fas fa-th"></i>
+                        All
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Search Bar -->
+            <div class="search-section">
+                <div class="search-bar">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="searchInput" placeholder="Search vehicles...">
+                </div>
+            </div>
+            
+            <!-- Vehicles Grid -->
+            <div class="vehicles-section">
+                <div class="vehicles-grid" id="vehiclesGrid">
+                    <!-- Vehicles will be populated here -->
+                </div>
+            </div>
+        </div>
+        
+        <!-- Player Info -->
+        <div class="player-info">
+            <div class="money-display">
+                <i class="fas fa-dollar-sign"></i>
+                <span id="playerMoney">$0</span>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Boss Menu -->
+    <div id="bossMenu" class="menu-container" style="display: none;">
+        <div class="menu-header">
+            <h1><i class="fas fa-cog"></i> Shop Management</h1>
+            <button class="close-btn" onclick="closeMenu()">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        
+        <div class="menu-content">
+            <!-- Tabs -->
+            <div class="tabs">
+                <button class="tab-btn active" data-tab="stock">Stock Management</button>
+                <button class="tab-btn" data-tab="sales">Sales History</button>
+                <button class="tab-btn" data-tab="society">Society Money</button>
+                <button class="tab-btn" data-tab="employees">Employee Management</button>
+                <button class="tab-btn" data-tab="settings">Settings</button>
+            </div>
+            
+            <!-- Stock Management Tab -->
+            <div id="stockTab" class="tab-content active">
+                <div class="stock-grid" id="stockGrid">
+                    <!-- Stock items will be populated here -->
+                </div>
+            </div>
+            
+            <!-- Sales History Tab -->
+            <div id="salesTab" class="tab-content">
+                <div class="sales-list" id="salesList">
+                    <!-- Sales history will be populated here -->
+                </div>
+            </div>
+            
+            <!-- Society Money Tab -->
+            <div id="societyTab" class="tab-content">
+                <div class="society-section">
+                    <div class="society-balance">
+                        <h3><i class="fas fa-university"></i> Society Balance</h3>
+                        <div class="balance-display">
+                            <span class="balance-amount" id="societyBalance">$0</span>
+                        </div>
+                    </div>
+                    
+                    <div class="society-actions">
+                        <div class="action-card">
+                            <h4><i class="fas fa-arrow-down"></i> Deposit Money</h4>
+                            <div class="input-group">
+                                <input type="number" id="depositAmount" placeholder="Amount to deposit" min="500" max="50000">
+                                <button onclick="depositMoney()" class="btn btn-success">
+                                    <i class="fas fa-plus"></i>
+                                    Deposit
+                                </button>
+                            </div>
+                            <small class="help-text">Min: $500 | Max: $50,000</small>
+                        </div>
+                        
+                        <div class="action-card">
+                            <h4><i class="fas fa-arrow-up"></i> Withdraw Money</h4>
+                            <div class="input-group">
+                                <input type="number" id="withdrawAmount" placeholder="Amount to withdraw" min="1000" max="100000">
+                                <button onclick="withdrawMoney()" class="btn btn-warning">
+                                    <i class="fas fa-minus"></i>
+                                    Withdraw
+                                </button>
+                            </div>
+                            <small class="help-text">Min: $1,000 | Max: $100,000 | Cooldown: 5 minutes</small>
+                        </div>
+                    </div>
+                    
+                    <div class="transactions-section">
+                        <h4><i class="fas fa-history"></i> Recent Transactions</h4>
+                        <div class="transactions-list" id="transactionsList">
+                            <!-- Transactions will be populated here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Employee Management Tab -->
+            <div id="employeesTab" class="tab-content">
+                <div class="employees-section">
+                    <div class="recruit-section">
+                        <h3><i class="fas fa-user-plus"></i> Recruit Employee</h3>
+                        <div class="recruit-form">
+                            <div class="input-group">
+                                <input type="number" id="recruitPlayerId" placeholder="Player ID" min="1">
+                                <input type="text" id="recruitPlayerName" placeholder="Player Name (optional)" maxlength="50">
+                                <button onclick="recruitEmployee()" class="btn btn-success">
+                                    <i class="fas fa-user-plus"></i>
+                                    Recruit
+                                </button>
+                            </div>
+                            <small class="help-text">Enter the Player ID to recruit them as an employee</small>
+                        </div>
+                    </div>
+                    
+                    <div class="employees-list-section">
+                        <h3><i class="fas fa-users"></i> Current Employees</h3>
+                        <div class="employees-list" id="employeesList">
+                            <!-- Employees will be populated here -->
+                        </div>
+                    </div>
+                    
+                    <div class="permissions-info">
+                        <h4><i class="fas fa-info-circle"></i> Employee Permissions</h4>
+                        <div class="permissions-grid">
+                            <div class="permission-item">
+                                <i class="fas fa-plus-circle"></i>
+                                <span>Add Vehicle Stock</span>
+                            </div>
+                            <div class="permission-item">
+                                <i class="fas fa-minus-circle"></i>
+                                <span>Remove Vehicle Stock</span>
+                            </div>
+                            <div class="permission-item">
+                                <i class="fas fa-tag"></i>
+                                <span>Set Custom Prices</span>
+                            </div>
+                            <div class="permission-item">
+                                <i class="fas fa-chart-line"></i>
+                                <span>View Sales History</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Settings Tab -->
+            <div id="settingsTab" class="tab-content">
+                <div class="settings-section">
+                    <h3>Transfer Ownership</h3>
+                    <div class="transfer-form">
+                        <input type="number" id="transferPlayerId" placeholder="Player ID">
+                        <button onclick="transferOwnership()" class="btn btn-danger">
+                            <i class="fas fa-exchange-alt"></i>
+                            Transfer Ownership
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Vehicle Details Modal -->
+    <div id="vehicleModal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modalVehicleName">Vehicle Name</h2>
+                <button class="close-btn" onclick="closeModal()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            
+            <div class="modal-body">
+                <div class="vehicle-info">
+                    <div class="info-item">
+                        <span class="label">Price:</span>
+                        <span class="value" id="modalVehiclePrice">$0</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="label">Category:</span>
+                        <span class="value" id="modalVehicleCategory">Unknown</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="label">Stock:</span>
+                        <span class="value" id="modalVehicleStock">0</span>
+                    </div>
+                </div>
+                
+                <div class="plate-input">
+                    <label for="plateInput">License Plate:</label>
+                    <input type="text" id="plateInput" maxlength="8" placeholder="Enter plate">
+                </div>
+                
+                <div class="modal-actions">
+                    <button onclick="testDriveVehicle()" class="btn btn-secondary">
+                        <i class="fas fa-key"></i>
+                        Test Drive
+                    </button>
+                    <button onclick="buyVehicle()" class="btn btn-primary">
+                        <i class="fas fa-shopping-cart"></i>
+                        Buy Vehicle
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Stock Management Modal -->
+    <div id="stockModal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="stockModalVehicleName">Manage Stock</h2>
+                <button class="close-btn" onclick="closeStockModal()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            
+            <div class="modal-body">
+                <div class="stock-actions">
+                    <div class="action-group">
+                        <label>Add Stock:</label>
+                        <div class="input-group">
+                            <input type="number" id="addStockAmount" min="1" value="1">
+                            <button onclick="addStock()" class="btn btn-success">
+                                <i class="fas fa-plus"></i>
+                                Add
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="action-group">
+                        <label>Remove Stock:</label>
+                        <div class="input-group">
+                            <input type="number" id="removeStockAmount" min="1" value="1">
+                            <button onclick="removeStock()" class="btn btn-danger">
+                                <i class="fas fa-minus"></i>
+                                Remove
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="action-group">
+                        <label>Set Custom Price:</label>
+                        <div class="input-group">
+                            <input type="number" id="customPrice" min="0" placeholder="Enter price">
+                            <button onclick="setCustomPrice()" class="btn btn-warning">
+                                <i class="fas fa-tag"></i>
+                                Set Price
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Loading Overlay -->
+    <div id="loadingOverlay" class="loading-overlay" style="display: none;">
+        <div class="loading-spinner">
+            <i class="fas fa-spinner fa-spin"></i>
+            <p>Loading...</p>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>

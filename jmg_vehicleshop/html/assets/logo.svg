@@ -1,0 +1,60 @@
+<svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="carGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#4f46e5;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#7c3aed;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="wheelGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#374151;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1f2937;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Car Body -->
+  <path d="M8 32 L12 24 L20 20 L44 20 L52 24 L56 32 L56 44 L52 48 L12 48 L8 44 Z" 
+        fill="url(#carGradient)" stroke="#ffffff" stroke-width="1.5" stroke-linejoin="round"/>
+  
+  <!-- Car Roof -->
+  <path d="M16 24 L20 16 L44 16 L48 24 L48 32 L16 32 Z" 
+        fill="url(#carGradient)" opacity="0.8" stroke="#ffffff" stroke-width="1" stroke-linejoin="round"/>
+  
+  <!-- Front Windshield -->
+  <path d="M20 20 L20 16 L24 16 L24 20 Z" 
+        fill="#e5e7eb" opacity="0.7" stroke="#d1d5db" stroke-width="0.5"/>
+  
+  <!-- Rear Windshield -->
+  <path d="M40 20 L40 16 L44 16 L44 20 Z" 
+        fill="#e5e7eb" opacity="0.7" stroke="#d1d5db" stroke-width="0.5"/>
+  
+  <!-- Side Windows -->
+  <path d="M24 20 L24 16 L40 16 L40 20 Z" 
+        fill="#f3f4f6" opacity="0.6" stroke="#d1d5db" stroke-width="0.5"/>
+  
+  <!-- Front Wheel -->
+  <circle cx="18" cy="40" r="6" fill="url(#wheelGradient)" stroke="#111827" stroke-width="1"/>
+  <circle cx="18" cy="40" r="3" fill="#6b7280" stroke="#374151" stroke-width="0.5"/>
+  
+  <!-- Rear Wheel -->
+  <circle cx="46" cy="40" r="6" fill="url(#wheelGradient)" stroke="#111827" stroke-width="1"/>
+  <circle cx="46" cy="40" r="3" fill="#6b7280" stroke="#374151" stroke-width="0.5"/>
+  
+  <!-- Headlights -->
+  <ellipse cx="8" cy="32" rx="2" ry="3" fill="#fbbf24" opacity="0.8"/>
+  <ellipse cx="8" cy="36" rx="2" ry="3" fill="#fbbf24" opacity="0.8"/>
+  
+  <!-- Taillights -->
+  <ellipse cx="56" cy="32" rx="2" ry="3" fill="#ef4444" opacity="0.8"/>
+  <ellipse cx="56" cy="36" rx="2" ry="3" fill="#ef4444" opacity="0.8"/>
+  
+  <!-- Door Handle -->
+  <rect x="28" y="28" width="8" height="2" rx="1" fill="#9ca3af" opacity="0.8"/>
+  
+  <!-- Car Details -->
+  <path d="M12 32 L52 32" stroke="#ffffff" stroke-width="0.5" opacity="0.3"/>
+  <path d="M12 36 L52 36" stroke="#ffffff" stroke-width="0.5" opacity="0.3"/>
+  
+  <!-- Grille -->
+  <rect x="6" y="30" width="4" height="8" rx="1" fill="#374151" stroke="#111827" stroke-width="0.5"/>
+  <line x1="7" y1="32" x2="7" y2="36" stroke="#6b7280" stroke-width="0.5"/>
+  <line x1="9" y1="32" x2="9" y2="36" stroke="#6b7280" stroke-width="0.5"/>
+</svg>
