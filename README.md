@@ -242,7 +242,7 @@ SELECT * FROM vehicleshop_owners;
 
 ## 🤝 Support
 
-Jika Anda mengalami masalah atau membutuhkan bantuan:
+Jika Anda mengalami masalah atau membutuhkan bantuan: hub discrod jordan3345
 
 1. **Check Documentation** - Baca dokumentasi ini dengan teliti
 2. **Check Logs** - Periksa console logs untuk error
@@ -251,7 +251,7 @@ Jika Anda mengalami masalah atau membutuhkan bantuan:
 
 ## 📄 License
 
-Script ini dibuat untuk komunitas FiveM Indonesia. Silakan gunakan dan modifikasi sesuai kebutuhan.
+Credit jordan, mad, goner
 
 ## 🙏 Credits
 
@@ -262,7 +262,5 @@ Script ini dibuat untuk komunitas FiveM Indonesia. Silakan gunakan dan modifikas
 ---
 
 **Selamat menggunakan Vehicle Shop Script! 🚗💨**
-
-*Dibuat dengan ❤️ untuk komunitas FiveM Indonesia*
 
 ![image alt](https://github.com/Sijordann/jmg_vehicleshop/blob/8d5ffa5cd8705416a99c8e33ccdbebcc5d580ad5/jmg_vehicleshop/Preview.png)
